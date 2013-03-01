@@ -10,9 +10,7 @@ First, add 'keychain-sync' to your package.json dependencies,
 or run:
 
 ```bash
-
 npm install keychain-sync
-
 ```
 
 Then use the following code:
@@ -28,5 +26,4 @@ keychainSync.getPassword('myAccount', 'myService')
 
 keychainSync.getPassword('myAccount', 'wrongService')
 # returns null
-
 ```
