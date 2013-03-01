@@ -1,6 +1,8 @@
 Keychain-Sync
 ==============
 
+[![Build Status](https://travis-ci.org/elentok/keychain-sync.png?branch=master)](https://travis-ci.org/elentok/keychain-sync)
+
 Access the mac keychain synchronously
 
 Usage
