@@ -27,4 +27,9 @@ describe "keychainSync", ->
         password = keychainSync.getPassword('myAccount', 'myService')
         expect(password).to.equal null
 
+  describe "#setPassword", ->
+    it "saves the password", ->
+      keychainSync.setPassword('myAccount', 'myService', 'myPassword')
+      expectedCmd = "/usr/bin/security add-generic-password -a myAccount -s myService -w myPassword"
+      expect(execSync.stdout).to.have.been.calledWith(expectedCmd)
 

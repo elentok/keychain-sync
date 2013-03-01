@@ -9,6 +9,10 @@ module.exports =
   _findPassword: (output) ->
     match = /^password: (.*)$/m.exec(output)
     if match? then match[1] else null
+  
+  setPassword: (account, service, password) ->
+    cmd = "/usr/bin/security add-generic-password -a #{account} -s #{service} -w #{password}"
+    execSync.stdout(cmd)
 
 
 
