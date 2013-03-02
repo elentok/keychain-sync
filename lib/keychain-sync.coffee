@@ -2,9 +2,9 @@ execSync = require 'execSync'
 
 module.exports =
   getPassword: (account, service) ->
-    cmd = "/usr/bin/security find-generic-password -a #{account} -s #{service} -g"
-    output = execSync.stdout(cmd)
-    @_findPassword(output)
+    cmd = "/usr/bin/security find-generic-password -a #{account} -s #{service} -w"
+    pass = execSync.stdout(cmd).trim()
+    if pass.length == 0 then null else pass
 
   _findPassword: (output) ->
     match = /^password: (.*)$/m.exec(output)

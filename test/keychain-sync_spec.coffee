@@ -15,15 +15,15 @@ describe "keychainSync", ->
   describe "#getPassword", ->
     describe "when the password exists", ->
       it "returns the password", ->
-        execSync.stdout.returns "keychain: ...\nbla bla\npassword: 12345"
+        execSync.stdout.returns "12345\n"
         password = keychainSync.getPassword('myAccount', 'myService')
         expect(password).to.equal '12345'
-        expectedCmd = "/usr/bin/security find-generic-password -a myAccount -s myService -g"
+        expectedCmd = "/usr/bin/security find-generic-password -a myAccount -s myService -w"
         expect(execSync.stdout).to.have.been.calledWith(expectedCmd)
 
     describe "when it doesn't exist", ->
       it "returns null", ->
-        execSync.stdout.returns "security: SecKeychainSearchCopyNext: The specified item could not be found in the keychain."
+        execSync.stdout.returns ""
         password = keychainSync.getPassword('myAccount', 'myService')
         expect(password).to.equal null
 
